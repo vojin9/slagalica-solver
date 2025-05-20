@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Wordle Solver (Color Count Feedback)</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      display: flex;
+      gap: 30px;
+    }
+    #main {
+      width: fit-content;
+    }
+    #history {
+      flex: 0 0 250px;
+      border-left: 2px solid #ccc;
+      padding-left: 20px;
+    }
+    #history h2 {
+      margin-top: 0;
+    }
+    .guess-entry {
+      margin-bottom: 10px;
+      font-family: monospace;
+      display: flex;
+      justify-content: space-between;
+      background: #f7f7f7;
+      padding: 6px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.1);
+	  width: fit-content;
+    }
+    .guess-word {
+      font-weight: bold;
+      letter-spacing: 3px;
+    }
+    .guess-colors {
+      min-width: 70px;
+      text-align: right;
+      color: #555;
+	  width: max-content;
+    }
+    input, button {
+      padding: 6px;
+      font-size: 16px;
+      margin: 4px 0;
+      width: 'max-content';
+      box-sizing: border-box;
+    }
+    button {
+      cursor: pointer;
+	  width: 'max-content';
+    }
+	.symbol-img:hover {
+  filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+  cursor: pointer;
+  transform: scale(1.1);
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+.symbol-img {
+    transition: transform 0.1s ease;
+    cursor: pointer;
+  }
+  .symbol-img:active {
+    transform: scale(0.9);
+  }
+  
+  </style>
+</head>
+<body>
+  <div id="main">
+    <h1>Epic slagalica solver</h1>
+	<div id="setup">
+	<img src="images/a.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('a')" style="cursor: pointer; margin: 5px;">
+  <img src="images/b.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('b')" style="cursor: pointer; margin: 5px;">
+  <img src="images/c.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('c')" style="cursor: pointer; margin: 5px;">
+  <img src="images/d.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('d')" style="cursor: pointer; margin: 5px;">
+  <img src="images/e.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('e')" style="cursor: pointer; margin: 5px;">
+  <img src="images/f.png" class = 'symbol-img' width="60" height="60" alt="A" onclick="addSymbol('f')" style="cursor: pointer; margin: 5px;">
+<br>
+    <button type="button" onclick="submitGuess()">Submit Feedback</button>
+    <button type="button" onclick="nextGuess()">Get Next Suggestion</button>
+    <button type="button" onclick="resetSolver()">Reset All</button>
+	<br>
+	<label id="output" style="margin-top:30px;display:inline-block;"> Hello </label>
+	</div>
+	<div id = "current-guess" style="padding-top:60px;" >
+	
+	</div>
+  </div>
+
+
+  <div id="history">
+    <h2>Guess History</h2>
+    <div id="guessList">
+      <!-- Guess entries will go here -->
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
